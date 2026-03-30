@@ -1,16 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lotto Number Generator</title>
+    <title>오늘의 명언</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Lotto Number Generator</h1>
-        <div id="lotto-balls-container"></div>
-        <button id="generate-btn">Generate Numbers</button>
+        <h1>오늘의 명언</h1>
+        <div class="quote-card" id="quote-card">
+            <p id="quote-text">명언을 불러오는 중...</p>
+            <p id="author-text" class="hidden"></p>
+            <p id="hint-text">클릭하여 누구의 말인지 확인하세요!</p>
+        </div>
+        <button id="new-quote-btn">새로운 명언 보기</button>
     </div>
     <script src="main.js"></script>
 </body>

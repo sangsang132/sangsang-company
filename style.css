@@ -1,92 +1,150 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Poppins:wght@400;600&display=swap');
 
 :root {
-    --background-color: #1a1a1a;
+    --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --card-bg: rgba(255, 255, 255, 0.15);
     --text-color: #ffffff;
-    --accent-color: #ff9900;
-    --ball-color: #ffffff;
-    --ball-text-color: #000000;
+    --accent-color: #ffd700;
+    --hint-color: rgba(255, 255, 255, 0.7);
+}
+
+* {
+    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: var(--background-color);
+    font-family: 'Poppins', 'Nanum Myeongjo', serif;
+    background: var(--bg-gradient);
     color: var(--text-color);
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%239C92AC' fill-opacity='0.1' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+    overflow: hidden;
 }
 
 .container {
     text-align: center;
-    padding: 2rem;
-    background-color: rgba(0, 0, 0, 0.2);
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    max-width: 500px;
     width: 90%;
+    max-width: 600px;
+    z-index: 1;
 }
 
 h1 {
     font-size: 2.5rem;
+    margin-bottom: 2rem;
     font-weight: 700;
-    color: var(--accent-color);
-    margin-bottom: 2rem;
-    text-shadow: 0 0 10px var(--accent-color), 0 0 20px var(--accent-color);
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-#lotto-balls-container {
+.quote-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    padding: 3rem 2rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+    min-height: 300px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
+    position: relative;
+    user-select: none;
 }
 
-#generate-btn {
-    background-color: var(--accent-color);
-    color: var(--background-color);
-    border: none;
-    padding: 1rem 2rem;
+.quote-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+}
+
+#quote-text {
+    font-size: 1.8rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    word-break: keep-all;
+}
+
+#author-text {
     font-size: 1.2rem;
+    color: var(--accent-color);
     font-weight: 600;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    margin-top: 1rem;
+}
+
+#author-text.hidden {
+    opacity: 0;
+    transform: translateY(10px);
+    visibility: hidden;
+}
+
+#author-text:not(.hidden) {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+#hint-text {
+    font-size: 0.9rem;
+    color: var(--hint-color);
+    position: absolute;
+    bottom: 1.5rem;
+    left: 0;
+    right: 0;
+    transition: opacity 0.3s ease;
+}
+
+.quote-card:active {
+    transform: scale(0.98);
+}
+
+#new-quote-btn {
+    margin-top: 2rem;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background: white;
+    color: #764ba2;
+    border: none;
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 0 15px var(--accent-color), 0 0 25px var(--accent-color);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-#generate-btn:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 25px var(--accent-color), 0 5px 35px var(--accent-color);
+#new-quote-btn:hover {
+    background: var(--accent-color);
+    color: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
 }
 
-lotto-ball {
-    --ball-size: 60px;
-    width: var(--ball-size);
-    height: var(--ball-size);
+/* Background elements for "alive" feel */
+body::before, body::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
-    background-color: var(--ball-color);
-    color: var(--ball-text-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5rem;
-    font-weight: 600;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), inset 0 0 10px rgba(255, 255, 255, 0.5);
-    animation: pop-in 0.5s ease forwards;
+    z-index: -1;
+    filter: blur(80px);
 }
 
-@keyframes pop-in {
-    0% {
-        transform: scale(0);
-        opacity: 0;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
+body::before {
+    background: #ffd700;
+    top: -100px;
+    left: -100px;
+    opacity: 0.2;
+}
+
+body::after {
+    background: #667eea;
+    bottom: -100px;
+    right: -100px;
+    opacity: 0.4;
 }
