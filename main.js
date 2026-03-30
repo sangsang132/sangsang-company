@@ -1,68 +1,88 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const quotes = [
-        { text: "삶이 있는 한 희망은 있다.", author: "키케로" },
-        { text: "산다는 것 그것은 치열한 전투이다.", author: "로망로랑" },
-        { text: "언제나 현재에 집중할수 있다면 행복할것이다.", author: "파울로 코엘료" },
-        { text: "진정으로 웃으려면 고통을 참아야하며, 나아가 고통과 함께 놀 줄 알아야 한다.", author: "찰리 채플린" },
-        { text: "직업에서 행복을 찾아라. 아니면 행복이 무엇인지 절대 모를 것이다.", author: "엘버트 허버드" },
-        { text: "신은 용기있는자를 결코 버리지 않는다.", author: "켄러" },
-        { text: "피할수 없으면 즐겨라.", author: "로버트 엘리엇" },
-        { text: "먼저 자신을 비웃어라. 다른 사람에게 비웃음 사기 전에.", author: "엘사 맥스웰" },
-        { text: "어리석은 자는 멀리서 행복을 찾고, 현명한 자는 자신의 발치에서 행복을 키워간다.", author: "제임스 오펜하임" },
-        { text: "한번의 실패와 영원한 실패를 혼동하지 마라.", author: "F.스콧 피츠제럴드" }
-    ];
+    // Mobile Menu Toggle
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navLinks = document.querySelector('.nav-links');
 
-    const quoteCard = document.getElementById('quote-card');
-    const quoteText = document.getElementById('quote-text');
-    const authorText = document.getElementById('author-text');
-    const hintText = document.getElementById('hint-text');
-    const newQuoteBtn = document.getElementById('new-quote-btn');
-
-    let currentQuoteIndex = -1;
-
-    function getRandomQuote() {
-        let newIndex;
-        if (quotes.length <= 1) return quotes[0];
-        
-        do {
-            newIndex = Math.floor(Math.random() * quotes.length);
-        } while (newIndex === currentQuoteIndex);
-        
-        currentQuoteIndex = newIndex;
-        return quotes[currentQuoteIndex];
+    if (mobileMenu) {
+        mobileMenu.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '80px';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.background = 'rgba(255, 255, 255, 0.95)';
+                navLinks.style.padding = '20px';
+                navLinks.style.textAlign = 'center';
+                
+                const links = navLinks.querySelectorAll('a');
+                links.forEach(link => {
+                    link.style.margin = '10px 0';
+                    link.style.display = 'block';
+                });
+            }
+        });
     }
 
-    function displayQuote() {
-        const quote = getRandomQuote();
-        
-        // 상태 초기화
-        authorText.classList.add('hidden');
-        hintText.style.opacity = '1';
-        hintText.textContent = "클릭하여 누구의 말인지 확인하세요!";
-        
-        // 텍스트 설정
-        quoteText.textContent = `"${quote.text}"`;
-        authorText.textContent = `- ${quote.author}`;
-    }
-
-    // 카드 클릭 이벤트
-    quoteCard.addEventListener('click', () => {
-        if (authorText.classList.contains('hidden')) {
-            // 인물 공개
-            authorText.classList.remove('hidden');
-            hintText.textContent = "한 번 더 클릭하면 다음 명언이 나옵니다.";
+    // Navbar Scroll Effect
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.style.padding = '10px 0';
+            navbar.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
         } else {
-            // 이미 인물이 공개된 상태에서 클릭하면 다음 명언으로
-            displayQuote();
+            navbar.style.padding = '0';
+            navbar.style.boxShadow = 'none';
         }
     });
 
-    // 하단 버튼 클릭 이벤트
-    newQuoteBtn.addEventListener('click', (e) => {
-        e.stopPropagation(); // 카드 클릭 이벤트 전파 방지
-        displayQuote();
+    // Reveal on Scroll Animation
+    const revealElements = document.querySelectorAll('.reveal');
+    
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, {
+        threshold: 0.1
     });
 
-    // 초기 실행
-    displayQuote();
+    revealElements.forEach(el => {
+        revealObserver.observe(el);
+    });
+
+    // Contact Form Submission
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            
+            // 실제 서버 전송 대신 알림 표시
+            alert(`감사합니다, ${name}님! 메시지가 성공적으로 전송되었습니다.\n입력하신 이메일(${email})로 곧 연락드리겠습니다.`);
+            
+            contactForm.reset();
+        });
+    }
+
+    // Smooth Scrolling for Nav Links (Optional - browser already does this via CSS)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                // If mobile menu is open, close it
+                if (window.innerWidth <= 768) {
+                    navLinks.style.display = 'none';
+                }
+            }
+        });
+    });
 });
