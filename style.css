@@ -1,11 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Poppins:wght@400;600&display=swap');
 
 :root {
-    --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --card-bg: rgba(255, 255, 255, 0.15);
-    --text-color: #ffffff;
-    --accent-color: #ffd700;
-    --hint-color: rgba(255, 255, 255, 0.7);
+    /* 밝고 화사한 파스텔 톤 설정 */
+    --bg-gradient: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    --card-bg: rgba(255, 255, 255, 0.8);
+    --text-color: #2d3436;
+    --accent-color: #6c5ce7;
+    --hint-color: rgba(0, 0, 0, 0.4);
+    --btn-bg: #6c5ce7;
+    --btn-text: #ffffff;
 }
 
 * {
@@ -22,51 +25,58 @@ body {
     min-height: 100vh;
     margin: 0;
     overflow: hidden;
+    position: relative;
 }
 
 .container {
     text-align: center;
-    width: 90%;
-    max-width: 600px;
+    width: 95%; /* 너비를 조금 더 넓힘 */
+    max-width: 800px; /* 긴 문장을 위해 최대 너비 증가 */
     z-index: 1;
 }
 
 h1 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
     font-weight: 700;
-    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    color: #2d3436;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .quote-card {
     background: var(--card-bg);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 24px;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 30px;
     padding: 3rem 2rem;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
     cursor: pointer;
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
-    min-height: 300px;
+    min-height: 250px; /* 높이를 조금 줄여 컴팩트하게 변경 */
     display: flex;
     flex-direction: column;
     justify-content: center;
     position: relative;
     user-select: none;
+    overflow: hidden; /* 영역 밖으로 나가는 글자 숨김 */
 }
 
 .quote-card:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
 }
 
 #quote-text {
-    font-size: 1.8rem;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
+    font-size: clamp(1.2rem, 4vw, 1.8rem); /* 화면 크기에 따라 폰트 조절 */
+    line-height: 1.2;
+    margin-bottom: 1rem;
     font-weight: 700;
-    word-break: keep-all;
+    color: #2d3436;
+    white-space: nowrap; /* 무조건 한 줄 설정 */
+    overflow: hidden; /* 넘치는 글자 숨김 */
+    text-overflow: ellipsis; /* 넘치면 ... 표시 */
+    width: 100%;
 }
 
 #author-text {
@@ -96,7 +106,6 @@ h1 {
     bottom: 1.5rem;
     left: 0;
     right: 0;
-    transition: opacity 0.3s ease;
 }
 
 .quote-card:active {
@@ -104,47 +113,53 @@ h1 {
 }
 
 #new-quote-btn {
-    margin-top: 2rem;
-    padding: 1rem 2.5rem;
+    margin-top: 2.5rem;
+    padding: 1rem 3rem;
     font-size: 1.1rem;
     font-weight: 600;
-    background: white;
-    color: #764ba2;
+    background: var(--btn-bg);
+    color: var(--btn-text);
     border: none;
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 20px rgba(108, 92, 231, 0.3);
 }
 
 #new-quote-btn:hover {
-    background: var(--accent-color);
-    color: #333;
-    transform: translateY(-2px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(108, 92, 231, 0.4);
+    filter: brightness(1.1);
 }
 
-/* Background elements for "alive" feel */
+/* 배경에 생동감을 주는 부드러운 원형 요소들 */
 body::before, body::after {
     content: '';
     position: absolute;
-    width: 300px;
-    height: 300px;
+    width: 500px;
+    height: 500px;
     border-radius: 50%;
     z-index: -1;
-    filter: blur(80px);
+    filter: blur(100px);
+    animation: float 20s infinite alternate;
 }
 
 body::before {
-    background: #ffd700;
-    top: -100px;
+    background: #ffecd2; /* 연한 살구색 */
+    top: -150px;
     left: -100px;
-    opacity: 0.2;
+    opacity: 0.6;
 }
 
 body::after {
-    background: #667eea;
-    bottom: -100px;
+    background: #a1c4fd; /* 연한 파란색 */
+    bottom: -150px;
     right: -100px;
     opacity: 0.4;
+    animation-delay: -10s;
+}
+
+@keyframes float {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    100% { transform: translate(50px, 100px) rotate(15deg); }
 }
