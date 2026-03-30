@@ -435,12 +435,18 @@ footer {
 }
 
 .reveal {
-    opacity: 0;
-    transform: translateY(60px);
+    opacity: 1; /* 기본적으로 보이게 수정 */
+    transform: translateY(0); /* 기본 위치 */
     transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-.reveal.active {
+/* 자바스크립트가 클래스를 조절할 수 있도록 준비 (애니메이션을 원하는 경우에만 적용) */
+.js-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.js-reveal.active {
     opacity: 1;
     transform: translateY(0);
 }
