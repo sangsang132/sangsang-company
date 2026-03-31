@@ -448,11 +448,6 @@ body.dark-mode .dark-mode-toggle i::before {
 }
 
 /* Footer */
-.comments {
-    padding-bottom: 50px;
-    border-top: 1px solid var(--border-color);
-}
-
 footer {
     padding: 100px 0;
     text-align: center;
