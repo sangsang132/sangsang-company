@@ -106,14 +106,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 5. Contact Form
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('name').value;
-            alert(`감사합니다, ${name}님! 메시지가 성공적으로 전송되었습니다.`);
-            contactForm.reset();
-        });
-    }
+    // 5. Contact Form (Handled by Formspree)
 });
