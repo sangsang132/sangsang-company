@@ -1,14 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Noto+Sans+KR:wght@300;400;700&display=swap');
 
 :root {
-    --primary-color: #1a1a1a; /* Sophisticated Black */
-    --accent-color: #2c3e50; /* Slate Blue */
+    --primary-color: #1a1a1a;
+    --accent-color: #2c3e50;
     --text-color: #333333;
     --light-text: #777777;
     --bg-color: #ffffff;
     --off-white: #fcfcfc;
     --glass-bg: rgba(255, 255, 255, 0.9);
     --nav-height: 90px;
+    --card-bg: #ffffff;
+    --border-color: #eee;
+    --white: #ffffff;
+}
+
+body.dark-mode {
+    --primary-color: #fcfcfc;
+    --accent-color: #3498db;
+    --text-color: #f0f0f0;
+    --light-text: #bbb;
+    --bg-color: #121212;
+    --off-white: #1a1a1a;
+    --glass-bg: rgba(18, 18, 18, 0.9);
+    --card-bg: #1e1e1e;
+    --border-color: #333;
+    --white: #121212;
 }
 
 * {
@@ -27,6 +43,7 @@ body {
     background-color: var(--bg-color);
     line-height: 1.8;
     overflow-x: hidden;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
@@ -35,11 +52,35 @@ body {
     margin: 0 auto;
 }
 
+/* Dark Mode Toggle */
+.dark-mode-toggle {
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-left: 2rem;
+    transition: transform 0.3s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--off-white);
+    border: 1px solid var(--border-color);
+}
+
+.dark-mode-toggle:hover {
+    transform: scale(1.1);
+}
+
+body.dark-mode .dark-mode-toggle i::before {
+    content: "\f185"; /* sun icon */
+}
+
 /* Navbar */
 .navbar {
     height: var(--nav-height);
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px);
+    background: transparent;
     position: fixed;
     top: 0;
     width: 100%;
@@ -47,6 +88,13 @@ body {
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     display: flex;
     align-items: center;
+}
+
+.navbar.scrolled {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 30px rgba(0,0,0,0.05);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .nav-container {
@@ -113,7 +161,8 @@ body {
     font-family: 'Playfair Display', serif;
     font-size: 15vw;
     font-weight: 900;
-    color: rgba(0,0,0,0.02);
+    color: var(--primary-color);
+    opacity: 0.02;
     z-index: 0;
     top: 50%;
     left: 50%;
@@ -158,15 +207,17 @@ body {
     text-transform: uppercase;
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     cursor: pointer;
+    border: none;
 }
 
 .btn-primary {
     background: var(--primary-color);
-    color: var(--white, #fff);
+    color: var(--bg-color);
 }
 
 .btn-primary:hover {
     background: var(--accent-color);
+    color: #fff;
     transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
@@ -179,7 +230,7 @@ body {
 
 .btn-outline:hover {
     background: var(--primary-color);
-    color: #fff;
+    color: var(--bg-color);
 }
 
 /* About Section & Building */
@@ -250,14 +301,13 @@ body {
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 30px 60px rgba(0,0,0,0.1);
-    background-color: #f0f0f0; /* 이미지가 안 뜰 때를 대비한 배경색 */
+    background-color: var(--off-white);
 }
 
 .vision-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 1; /* 가시성을 위해 투명도 제거 */
     transition: transform 1.2s ease;
     display: block;
 }
@@ -270,12 +320,13 @@ body {
     position: absolute;
     bottom: 20px;
     right: 20px;
-    background: #fff;
+    background: var(--bg-color);
     padding: 10px 20px;
     font-size: 0.7rem;
     font-weight: 700;
     letter-spacing: 2px;
     color: var(--primary-color);
+    border: 1px solid var(--border-color);
 }
 
 .about-visual {
@@ -346,9 +397,9 @@ body {
 }
 
 .card {
-    background: #fff;
+    background: var(--card-bg);
     padding: 60px 40px;
-    border: 1px solid #eee;
+    border: 1px solid var(--border-color);
     transition: all 0.4s ease;
 }
 
@@ -379,11 +430,12 @@ body {
     width: 100%;
     padding: 1.5rem 0;
     border: none;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--border-color);
     outline: none;
     font-size: 1rem;
     transition: border-color 0.3s;
     background: transparent;
+    color: var(--text-color);
 }
 
 .form-group input:focus, .form-group textarea:focus {
@@ -398,7 +450,7 @@ body {
 /* Footer */
 footer {
     padding: 100px 0;
-    border-top: 1px solid #eee;
+    border-top: 1px solid var(--border-color);
     text-align: center;
 }
 
@@ -435,12 +487,11 @@ footer {
 }
 
 .reveal {
-    opacity: 1; /* 기본적으로 보이게 수정 */
-    transform: translateY(0); /* 기본 위치 */
+    opacity: 1;
+    transform: translateY(0);
     transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-/* 자바스크립트가 클래스를 조절할 수 있도록 준비 (애니메이션을 원하는 경우에만 적용) */
 .js-reveal {
     opacity: 0;
     transform: translateY(40px);
@@ -468,5 +519,9 @@ footer {
     }
     .nav-links {
         display: none;
+    }
+    .dark-mode-toggle {
+        margin-left: auto;
+        margin-right: 1rem;
     }
 }
