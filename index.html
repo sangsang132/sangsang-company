@@ -10,7 +10,7 @@
 
       gtag('config', 'G-802GSF56RZ');
     </script>
-    <script type="text/javascript">
+    <script defer type="text/javascript">
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
             t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
@@ -22,9 +22,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Primary SEO Meta Tags -->
-    <title>상상컴퍼니 | 프리미엄 크리에이티브 솔루션 & 디자인 에이전시</title>
-    <meta name="description" content="상상컴퍼니는 UI/UX 디자인, 디지털 브랜딩, AI 크리에이티브 솔루션을 제공하는 프리미엄 그룹입니다. 상상을 현실로 만드는 혁신적인 설계를 경험하세요.">
-    <meta name="keywords" content="상상컴퍼니, 디자인 에이전시, UIUX 디자인, 디지털 브랜딩, AI 솔루션, 크리에이티브 그룹, 웹디자인, 브랜드 컨설팅">
+    <title>상상컴퍼니 | 프리미엄 UI/UX 디자인 & 디지털 브랜딩 에이전시</title>
+    <meta name="description" content="상상컴퍼니는 혁신적인 UI/UX 디자인, 디지털 브랜딩, AI 크리에이티브 솔루션을 제공하는 디자인 에이전시입니다. 브랜드의 상상을 현실로 만드는 최고의 파트너를 만나보세요.">
+    <meta name="keywords" content="상상컴퍼니, 디자인 에이전시, UIUX 디자인, 디지털 브랜딩, AI 솔루션, 크리에이티브 그룹, 웹디자인, 브랜드 컨설팅, 서울 디자인 업체">
     <meta name="author" content="상상컴퍼니">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://sang-sang.com/">
@@ -32,8 +32,8 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://sang-sang.com/">
-    <meta property="og:title" content="상상컴퍼니 | 프리미엄 크리에이티브 솔루션">
-    <meta property="og:description" content="상상을 현실로 만드는 혁신적인 설계. UI/UX, 브랜딩, AI 솔루션의 정점.">
+    <meta property="og:title" content="상상컴퍼니 | 프리미엄 UI/UX 디자인 & 디지털 브랜딩">
+    <meta property="og:description" content="상상을 현실로 만드는 혁신적인 설계. UI/UX 디자인, 브랜딩, AI 솔루션의 정점.">
     <meta property="og:image" content="https://sang-sang.com/favicon.svg">
     <meta property="og:site_name" content="상상컴퍼니">
     <meta property="og:locale" content="ko_KR">
@@ -41,17 +41,20 @@
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://sang-sang.com/">
-    <meta property="twitter:title" content="상상컴퍼니 | 프리미엄 크리에이티브 솔루션">
-    <meta property="twitter:description" content="상상을 현실로 만드는 혁신적인 설계. UI/UX, 브랜딩, AI 솔루션의 정점.">
+    <meta property="twitter:title" content="상상컴퍼니 | 프리미엄 UI/UX 디자인 & 디지털 브랜딩">
+    <meta property="twitter:description" content="상상을 현실로 만드는 혁신적인 설계. UI/UX 디자인, 브랜딩, AI 솔루션의 정점.">
     <meta property="twitter:image" content="https://sang-sang.com/favicon.svg">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="shortcut icon" href="favicon.svg" type="image/x-icon">
     <link rel="apple-touch-icon" href="favicon.svg">
     
     <!-- Fonts and Icons -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
 
     <!-- JSON-LD Structured Data -->
@@ -83,19 +86,21 @@
     <header class="navbar" role="banner">
         <div class="container nav-container">
             <a href="/" class="logo" aria-label="상상컴퍼니 홈">SANGSANG<span>.</span></a>
-            <nav class="nav-links" role="navigation">
+            <nav class="nav-links" id="nav-menu" role="navigation">
                 <a href="#home">Home</a>
                 <a href="#about">Philosophy</a>
                 <a href="#services">Services</a>
                 <a href="#contact">Contact</a>
             </nav>
-            <div class="dark-mode-toggle" id="dark-mode-toggle" aria-label="다크 모드 전환">
-                <i class="fas fa-moon"></i>
-            </div>
-            <div class="menu-toggle" id="mobile-menu" aria-label="메뉴 열기">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+            <div class="nav-actions">
+                <div class="dark-mode-toggle" id="dark-mode-toggle" aria-label="다크 모드 전환" role="button" tabindex="0">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <div class="menu-toggle" id="mobile-menu" aria-label="모바일 메뉴 열기" role="button" tabindex="0">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
             </div>
         </div>
     </header>
@@ -104,11 +109,11 @@
         <!-- Hero Section -->
         <section id="home" class="hero">
             <div class="container hero-content">
-                <h1 class="fade-in">Architecture of <span>Imagination</span></h1>
-                <p class="fade-in delay-1">우리는 단순한 기술을 넘어, 상상의 구조를 현실의 위대함으로 설계합니다.</p>
+                <h1 class="fade-in">Architecture of <span>Digital Imagination</span></h1>
+                <p class="fade-in delay-1">단순한 기술을 넘어, 상상을 현실의 가치로 설계하는 프리미엄 디자인 에이전시입니다.</p>
                 <div class="hero-btns fade-in delay-2">
-                    <a href="#about" class="btn btn-primary">Our Vision</a>
-                    <a href="#contact" class="btn btn-outline">Consulting</a>
+                    <a href="#about" class="btn btn-primary">비전 확인하기</a>
+                    <a href="#contact" class="btn btn-outline">무료 컨설팅</a>
                 </div>
             </div>
         </section>
@@ -118,9 +123,9 @@
             <div class="container section-content">
                 <div class="about-flex">
                     <article class="about-text-content reveal">
-                        <h2 class="section-title">Beyond the Visible</h2>
+                        <h2 class="section-title">Beyond UI/UX: 가시성을 넘어선 가치</h2>
                         <p class="about-description">
-                            상상컴퍼니는 보이지 않는 가치를 물리적인 공간과 디지털 경험으로 치환하는 프리미엄 크리에이티브 그룹입니다. 
+                            상상컴퍼니는 보이지 않는 가치를 최고의 디지털 경험으로 치환하는 프리미엄 크리에이티브 그룹입니다. 
                             우리의 본사는 단순한 건물이 아닌, 매 순간 새로운 영감이 탄생하는 '상상의 요람'입니다.
                         </p>
                         <div class="vision-statement">
@@ -130,7 +135,7 @@
                                 <footer>"Imagination is the architecture of the future."</footer>
                             </blockquote>
                             <div class="vision-image-box">
-                                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1500" alt="우주적 상상력을 상징하는 추상적인 디지털 이미지" class="vision-img" loading="lazy">
+                                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800" alt="상상컴퍼니의 비전을 상징하는 추상적인 디지털 아트" class="vision-img" loading="lazy" width="800" height="533">
                                 <div class="vision-badge">SANGSANG VISION</div>
                             </div>
                         </div>
@@ -138,7 +143,7 @@
                     <div class="about-visual reveal">
                         <div class="building-image-container">
                             <div class="building-overlay"></div>
-                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2070" alt="서울에 위치한 상상컴퍼니 본사 건물 전경" class="building-img" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800" alt="서울에 위치한 상상컴퍼니 디자인 스튜디오 전경" class="building-img" loading="lazy" width="800" height="1000">
                             <div class="building-info">
                                 <span class="location">SEOUL, KOREA</span>
                                 <span class="name">SANGSANG HQ</span>
@@ -152,22 +157,22 @@
         <!-- Services Section -->
         <section id="services" class="services">
             <div class="container section-content">
-                <h2 class="section-title reveal">Our Services</h2>
+                <h2 class="section-title reveal">전문화된 디자인 솔루션</h2>
                 <div class="service-cards">
                     <article class="card reveal">
                         <div class="card-icon"><i class="fas fa-desktop" aria-hidden="true"></i></div>
-                        <h3>UI/UX Design</h3>
-                        <p>사용자 중심의 직관적이고 감각적인 인터페이스를 설계하여 디지털 경험을 혁신합니다.</p>
+                        <h3>Premium UI/UX Design</h3>
+                        <p>사용자 중심의 직관적이고 감각적인 인터페이스를 설계하여 비즈니스 가치를 극대화합니다.</p>
                     </article>
                     <article class="card reveal">
                         <div class="card-brand"><i class="fas fa-chess" aria-hidden="true"></i></div>
                         <h3>Digital Branding</h3>
-                        <p>기업의 핵심 가치를 시각적 언어로 표현하여 시장에서 압도적인 존재감을 구축합니다.</p>
+                        <p>기업의 핵심 정체성을 시각적 언어로 정교하게 표현하여 압도적인 브랜드 존재감을 구축합니다.</p>
                     </article>
                     <article class="card reveal">
                         <div class="card-ai"><i class="fas fa-microchip" aria-hidden="true"></i></div>
                         <h3>AI Creative Solution</h3>
-                        <p>최신 인공지능 기술을 창의적인 프로세스에 결합하여 차세대 비즈니스 솔루션을 제공합니다.</p>
+                        <p>최첨단 AI 기술과 인간의 창의성을 결합하여 미래 지향적인 디지털 솔루션을 제공합니다.</p>
                     </article>
                 </div>
             </div>
@@ -176,11 +181,11 @@
         <!-- Contact Section -->
         <section id="contact" class="contact">
             <div class="container section-content">
-                <h2 class="section-title reveal">Connect with Us</h2>
+                <h2 class="section-title reveal">성장을 위한 디자인 파트너</h2>
                 <div class="contact-wrapper reveal">
                     <form action="https://formspree.io/f/xykbjzzp" method="POST" id="contact-form">
                         <div class="form-group">
-                            <label for="name" class="sr-only">이름</label>
+                            <label for="name" class="sr-only">성함</label>
                             <input type="text" name="name" id="name" placeholder="Name" required aria-required="true">
                         </div>
                         <div class="form-group">
@@ -188,10 +193,10 @@
                             <input type="email" name="_replyto" id="email" placeholder="Email Address" required aria-required="true">
                         </div>
                         <div class="form-group">
-                            <label for="message" class="sr-only">메시지 내용</label>
+                            <label for="message" class="sr-only">문의 내용</label>
                             <textarea name="message" id="message" rows="5" placeholder="Message" required aria-required="true"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-submit">Send Message</button>
+                        <button type="submit" class="btn btn-primary btn-submit">문의 메세지 보내기</button>
                     </form>
                 </div>
             </div>
@@ -210,6 +215,6 @@
         </div>
     </footer>
 
-    <script src="main.js"></script>
+    <script defer src="main.js"></script>
 </body>
 </html>
